@@ -6,7 +6,7 @@ gem 'rails', '3.1.0'
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3', :groups => [:development, :test]
-gem 'pg', :group => heroku
+gem 'pg', :group => :heroku
 
 gem 'json'
 
