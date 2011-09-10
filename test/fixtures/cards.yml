@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
 
 one:
-  top: 50
+  top: 150
   left: 70
   text: "Some text on the card"
 
 two:
   top: 350
-  left: 25
+  left: 525
   text: "Give promotions"

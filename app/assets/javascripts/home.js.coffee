@@ -2,5 +2,9 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
+stop_drag_handler = (event, ui) -> console.log ui.helper
+
 $ ->
-	$('.card').draggable ->
+	$('.card').draggable 
+		stop: stop_drag_handler
+	
