@@ -1,4 +1,6 @@
 CardsOnAScreen::Application.routes.draw do
+  get "card/moved" => "home#cards_moved"
+
   get "home/index"
 
   # The priority is based upon order of creation:
