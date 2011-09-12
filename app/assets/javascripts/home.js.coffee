@@ -8,9 +8,13 @@ stop_drag_handler = (event, ui) ->
 	$.get "card/moved", id: ui.helper[0].children[0].innerHTML, top: ui.position.top, left: ui.position.left
 
 
+new_card_handler = ->
+	console.log "making a new card"
+ 	$.get "card/create" -> alert "server says hi"
 
 
 $ ->
 	$('.card').draggable 
 		stop: stop_drag_handler
 	
+	$('#new_card_button').click new_card_handler

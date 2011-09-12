@@ -12,5 +12,11 @@ class HomeController < ApplicationController
     render :nothing => true
   end
   
-  
+  def card_create
+    card = Card.new
+    card.left = params[:left]
+    card.top = params[:top]
+    card.save!
+    render :partial => "card", :object => card
+  end
 end
