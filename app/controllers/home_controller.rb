@@ -11,4 +11,6 @@ class HomeController < ApplicationController
     
     render :nothing => true
   end
+  
+  
 end
