@@ -36,7 +36,10 @@ textarea_blur_handler = (event) ->
 	)
 	
 delete_area_drop_handler = (event, ui) ->
-	alert "droppped"
+	xhr = $.get "card/delete", id: $(ui.helper).children(".database_id").html()
+	xhr.error( -> alert "Server isn't responding. Try reloading.")
+	xhr.success( -> $(ui.helper).remove())
+
 
 setup_card_interactions = ->
 	$('.card').dblclick edit_card_handler
