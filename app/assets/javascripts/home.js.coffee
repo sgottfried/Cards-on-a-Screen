@@ -11,7 +11,10 @@ stop_drag_handler = (event, ui) ->
 new_card_handler = ->
 	console.log "making a new card"
 	xhr = $.get "card/create", {left: 100, top: 150}
-	xhr.success((data) -> $("#cards").append(data))
+	xhr.success((data) -> 
+		$("#cards").append(data)
+		$("#cards .card").last().draggable() 
+	)
 
 
 $ ->
