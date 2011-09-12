@@ -20,12 +20,21 @@ span.database_id {
 	display: none;
 }
 
-#new_card_button {
-	padding: 2px;
-	background-color: #55aa00;
-	width: 150px;
+.button {
 	height: 18px;
 	text-align: center;
+	padding: 2px;
+	margin: 5px;
+}
+
+#new_card_button {
+	background-color: #00aa55;
+	width: 150px;
+}
+
+#delete_area {
+	background-color: #ee5555;
+	width: 250px;
 }
 
 .card textarea {

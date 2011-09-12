@@ -34,6 +34,9 @@ textarea_blur_handler = (event) ->
 		$(event.target).parent().children(".text").show()
 		$(event.target).remove()
 	)
+	
+delete_area_drop_handler = (event, ui) ->
+	alert "droppped"
 
 setup_card_interactions = ->
 	$('.card').dblclick edit_card_handler
@@ -42,6 +45,10 @@ setup_card_interactions = ->
 
 $ ->
 	$('#new_card_button').click new_card_handler
+	
+	$("#delete_area").droppable({
+		drop: delete_area_drop_handler
+	})
 	$("#cards").delegate("textarea", "blur", textarea_blur_handler)
 	
 	setup_card_interactions()
