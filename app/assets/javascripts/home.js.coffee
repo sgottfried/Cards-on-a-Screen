@@ -19,13 +19,15 @@ new_card_handler = ->
 
 edit_card_handler = (event) ->
 	current_text = $(event.target).children(".text").html()
-	$(event.target).children(".text").replaceWith("<textarea>" + current_text + "</textarea>")
+	$(event.target).children(".text").hide()
+	$(event.target).children(".text").after("<textarea>" + current_text + "</textarea>")
 	$(event.target).children("textarea").focus()
 
 textarea_blur_handler = (event) ->
 	current_text = $(event.target).val()
-	$(event.target).replaceWith("<span class=\"text\">"+current_text+"</span>")
-	
+	$(event.target).parent().children(".text").html(current_text)
+	$(event.target).parent().children(".text").show()
+	$(event.target).remove()
 
 setup_card_interactions = ->
 	$('.card').dblclick edit_card_handler
