@@ -2,6 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+body, div, span, textarea {
+	font-family: Helvetica, sans-serif;
+	font-size: 12pt;
+}
 
 .card {
 	background-color: #eeeeee;
@@ -17,8 +21,16 @@ span.database_id {
 }
 
 #new_card_button {
+	padding: 2px;
 	background-color: #55aa00;
 	width: 100px;
-	height: 20px;
+	height: 18px;
 	text-align: center;
+}
+
+.card textarea {
+	height: 150px;
+	width: 250px;
+	background-color: #dddddd;
+	border: none;
 }

@@ -18,8 +18,14 @@ new_card_handler = ->
 	xhr.error( -> alert "Server isn't responding. Try reloading.")
 
 edit_card_handler = (event) ->
-	alert "thanks for the doubel clickes"
+	current_text = $(event.target).children(".text").html()
+	$(event.target).children(".text").replaceWith("<textarea>" + current_text + "</textarea>")
+	$(event.target).children("textarea").focus()
 
+textarea_blur_handler = (event) ->
+	current_text = $(event.target).val()
+	$(event.target).replaceWith("<span class=\"text\">"+current_text+"</span>")
+	
 
 setup_card_interactions = ->
 	$('.card').dblclick edit_card_handler
@@ -28,4 +34,6 @@ setup_card_interactions = ->
 
 $ ->
 	$('#new_card_button').click new_card_handler
+	$(".card").delegate("textarea", "blur", textarea_blur_handler)
+	
 	setup_card_interactions()
