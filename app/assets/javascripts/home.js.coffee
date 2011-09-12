@@ -13,12 +13,19 @@ new_card_handler = ->
 	xhr = $.get "card/create", {left: 100, top: 150}
 	xhr.success((data) -> 
 		$("#cards").append(data)
-		$("#cards .card").last().draggable() 
+		setup_card_interactions()
 	)
 	xhr.error( -> alert "Server isn't responding. Try reloading.")
 
-$ ->
+edit_card_handler = (event) ->
+	alert "thanks for the doubel clickes"
+
+
+setup_card_interactions = ->
+	$('.card').dblclick edit_card_handler
 	$('.card').draggable 
 		stop: stop_drag_handler
-	
+
+$ ->
 	$('#new_card_button').click new_card_handler
+	setup_card_interactions()
