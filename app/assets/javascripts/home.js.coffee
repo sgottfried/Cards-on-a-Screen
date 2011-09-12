@@ -42,6 +42,6 @@ setup_card_interactions = ->
 
 $ ->
 	$('#new_card_button').click new_card_handler
-	$(".card").delegate("textarea", "blur", textarea_blur_handler)
+	$("#cards").delegate("textarea", "blur", textarea_blur_handler)
 	
 	setup_card_interactions()
