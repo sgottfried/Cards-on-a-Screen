@@ -5,8 +5,8 @@
 stop_drag_handler = (event, ui) -> 
 	console.log "id", ui.helper[0].children[0].innerHTML
 	console.log "left: ", ui.position.left, "top: ", ui.position.top
-	$.get "card/moved", id: ui.helper[0].children[0].innerHTML, top: ui.position.top, left: ui.position.left
-
+	xhr = $.get "card/moved", id: ui.helper[0].children[0].innerHTML, top: ui.position.top, left: ui.position.left
+	xhr.error( -> alert "Server isn't responding. Try reloading.")
 
 new_card_handler = ->
 	console.log "making a new card"
@@ -15,7 +15,7 @@ new_card_handler = ->
 		$("#cards").append(data)
 		$("#cards .card").last().draggable() 
 	)
-
+	xhr.error( -> alert "Server isn't responding. Try reloading.")
 
 $ ->
 	$('.card').draggable 
