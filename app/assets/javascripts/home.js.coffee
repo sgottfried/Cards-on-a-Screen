@@ -42,7 +42,6 @@ delete_area_drop_handler = (event, ui) ->
 
 
 setup_card_interactions = ->
-	$('.card').dblclick edit_card_handler
 	$('.card').draggable 
 		stop: stop_drag_handler
 
@@ -53,5 +52,6 @@ $ ->
 		drop: delete_area_drop_handler
 	})
 	$("#cards").delegate("textarea", "blur", textarea_blur_handler)
+	$('#cards').delegate(".card", "dblclick", edit_card_handler)
 	
 	setup_card_interactions()
