@@ -25,9 +25,15 @@ edit_card_handler = (event) ->
 
 textarea_blur_handler = (event) ->
 	current_text = $(event.target).val()
-	$(event.target).parent().children(".text").html(current_text)
-	$(event.target).parent().children(".text").show()
-	$(event.target).remove()
+	
+	id = $(event.target).parent().children(".database_id").html()
+	xhr = $.get "card/text", id: id, text: current_text
+	xhr.error( -> alert "Server isn't responding. Try reloading.")
+	xhr.success( (data) ->
+		$(event.target).parent().children(".text").html(data)
+		$(event.target).parent().children(".text").show()
+		$(event.target).remove()
+	)
 
 setup_card_interactions = ->
 	$('.card').dblclick edit_card_handler

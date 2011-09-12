@@ -1,6 +1,7 @@
 CardsOnAScreen::Application.routes.draw do
   get "card/moved" => "home#cards_moved"
   get "card/create" => "home#card_create"
+  get "card/text" => "home#card_text"
 
   get "home/index"
 

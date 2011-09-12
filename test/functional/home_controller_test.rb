@@ -26,5 +26,12 @@ class HomeControllerTest < ActionController::TestCase
     assert response.body.include?("left: 50px; top: 50px")
   end
 
+  test "should update text and return it on card_text" do
+    get("card_text", {'id' => '980190962', 'text' => 'updated text'})
+
+    assert_response :success
+    assert_equal 'updated text', Card.find(980190962).text
+    assert_equal 'updated text', response.body
+  end
 
 end

@@ -20,4 +20,12 @@ class HomeController < ApplicationController
     card.save!
     render :partial => "card", :object => card
   end
+  
+  def card_text
+    card = Card.find_by_id(params[:id])
+    card.text = params[:text]
+    card.save!
+    
+    render :text => card.text
+  end
 end
