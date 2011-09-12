@@ -16,6 +16,7 @@ class HomeController < ApplicationController
     card = Card.new
     card.left = params[:left]
     card.top = params[:top]
+    card.text = "New card"
     card.save!
     render :partial => "card", :object => card
   end
