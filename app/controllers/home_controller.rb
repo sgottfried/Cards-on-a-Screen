@@ -28,4 +28,10 @@ class HomeController < ApplicationController
     
     render :text => card.text
   end
+  
+  def card_delete
+    card = Card.find_by_id(params[:id])
+    card.destroy
+    render :nothing => true
+  end
 end

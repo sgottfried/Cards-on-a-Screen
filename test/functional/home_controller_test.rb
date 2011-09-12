@@ -7,11 +7,11 @@ class HomeControllerTest < ActionController::TestCase
   end
 
   test "should update position on card_moved" do
-    get("cards_moved", {'id' => '980190962', 'top' => '5', 'left' => '5'})
+    get("cards_moved", {'id' => '1', 'top' => '5', 'left' => '5'})
 
     
-    assert_equal(5, Card.find(980190962).left)
-    assert_equal(5, Card.find(980190962).top)
+    assert_equal(5, Card.find(1).left)
+    assert_equal(5, Card.find(1).top)
     assert_response :success
   end
 
@@ -27,11 +27,19 @@ class HomeControllerTest < ActionController::TestCase
   end
 
   test "should update text and return it on card_text" do
-    get("card_text", {'id' => '980190962', 'text' => 'updated text'})
+    get("card_text", {'id' => '1', 'text' => 'updated text'})
 
     assert_response :success
-    assert_equal 'updated text', Card.find(980190962).text
+    assert_equal 'updated text', Card.find(1).text
     assert_equal 'updated text', response.body
+  end
+  
+  test "should delete card" do 
+    assert_difference('Card.count', -1) do
+      get("card_delete", {'id' => '2'})
+    end
+    
+    assert_response :success
   end
 
 end
