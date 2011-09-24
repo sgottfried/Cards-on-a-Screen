@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   def index
-    @cards = Card.all
+    @cards = Card.select {|c| c unless c.trashed}
   end
 
   def cards_moved
@@ -31,7 +31,8 @@ class HomeController < ApplicationController
   
   def card_delete
     card = Card.find_by_id(params[:id])
-    card.destroy
+    card.trashed = true
+    card.save
     render :nothing => true
   end
 end

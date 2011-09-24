@@ -49,7 +49,9 @@ $ ->
 	$('#new_card_button').click new_card_handler
 	
 	$("#delete_area").droppable({
-		drop: delete_area_drop_handler
+		drop: delete_area_drop_handler,
+		tolerance: "touch",
+		hoverClass: "droppable-hover-state"
 	})
 	$("#cards").delegate("textarea", "blur", textarea_blur_handler)
 	$('#cards').delegate(".card", "dblclick", edit_card_handler)
