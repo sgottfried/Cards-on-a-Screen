@@ -35,11 +35,10 @@ class HomeControllerTest < ActionController::TestCase
   end
   
   test "should delete card" do 
-    assert_difference('Card.count', -1) do
-      get("card_delete", {'id' => '2'})
-    end
-    
+    get("card_delete", {'id' => '2'})
     assert_response :success
+    card = Card.find(2)
+    assert card.trashed, 'If card is deleted, it should end up in the trash.'
   end
 
 end
