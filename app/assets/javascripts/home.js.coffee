@@ -18,8 +18,12 @@ $ ->
 	setup_card_interactions()
 
 stop_drag_handler = (event, ui) -> 
-	console.log "id", ui.helper[0].children[0].innerHTML
+	id = ui.helper[0].children[0].innerHTML
+	console.log "id", id
 	console.log "left: ", ui.position.left, "top: ", ui.position.top
+	if ui.position.top < 190
+		ui.position.top = 190 
+		$('.card:contains(' + id + ')').css('top', '190px')
 	xhr = $.get "card/moved", id: ui.helper[0].children[0].innerHTML, top: ui.position.top, left: ui.position.left
 	xhr.error( -> alert "Server isn't responding. Try reloading.")
 
