@@ -17,13 +17,14 @@ class HomeControllerTest < ActionController::TestCase
 
   test "should create card in DB and return card HTML on card_create" do
     assert_difference('Card.count') do
-      get("card_create", {'top' => '50', 'left' => '50'})
+      get("card_create", {'top' => '50', 'left' => '50', 'background_color' => 'FFFFFF'})
     end
     
     assert_response :success
 
     assert_present css_select(".database_id").first.children.first.content
-    assert response.body.include?("left: 50px; top: 50px")
+    assert response.body.include?("background-color:#FFFFFF; left: 50px; top: 50px"), 
+      "We should have created a white card at position left:50px, top:50px."
   end
 
   test "should update text and return it on card_text" do

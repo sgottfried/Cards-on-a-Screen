@@ -14,6 +14,7 @@ class HomeController < ApplicationController
   
   def card_create
     card = Card.new
+    card.background_color = params[:background_color]
     card.left = params[:left]
     card.top = params[:top]
     card.text = "New card"
