@@ -11,7 +11,7 @@ stop_drag_handler = (event, ui) ->
 
 new_card_handler = (bgcolor) ->
 	console.log "making a new card"
-	xhr = $.get "card/create", {background_color:bgcolor, left: 100, top: 150}
+	xhr = $.get "card/create", {background_color:bgcolor, left: 100, top: 250}
 	xhr.success((data) -> 
 		$("#cards").append(data)
 		setup_card_interactions()
@@ -47,9 +47,9 @@ setup_card_interactions = ->
 		stop: stop_drag_handler
 		
 $ ->
-	$('#new_white_card_button').click ( -> new_card_handler("FFFFFF"))
-	$('#new_red_card_button').click ( -> new_card_handler("FF0000"))
-	
+	$('#new_white_card_button').click ( -> new_card_handler("white"))
+	$('#new_red_card_button').click ( -> new_card_handler("red"))
+	$('#new_yellow_card_button').click ( -> new_card_handler("yellow"))
 
 	$("#delete_area").droppable({
 		drop: delete_area_drop_handler,

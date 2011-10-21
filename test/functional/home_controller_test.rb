@@ -17,13 +17,13 @@ class HomeControllerTest < ActionController::TestCase
 
   test "should create card in DB and return card HTML on card_create" do
     assert_difference('Card.count') do
-      get("card_create", {'top' => '50', 'left' => '50', 'background_color' => 'FFFFFF'})
+      get("card_create", {'top' => '50', 'left' => '50', 'background_color' => 'white'})
     end
     
     assert_response :success
 
     assert_present css_select(".database_id").first.children.first.content
-    assert response.body.include?("background-color:#FFFFFF; left: 50px; top: 50px"), 
+    assert response.body.include?("background-color:white; left: 50px; top: 50px"), 
       "We should have created a white card at position left:50px, top:50px."
   end
 
@@ -41,5 +41,4 @@ class HomeControllerTest < ActionController::TestCase
     card = Card.find(2)
     assert card.trashed, 'If card is deleted, it should end up in the trash.'
   end
-
 end

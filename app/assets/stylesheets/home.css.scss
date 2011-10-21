@@ -34,14 +34,20 @@ span.database_id {
 }
 
 #new_white_card_button {
-	background-color: #FFFFFF;
+	background-color: white;
 	position:absolute;
 }
 
 #new_red_card_button {
-	background-color: #FF0000;
+	background-color: red;
 	position:absolute;
 	left:150px;
+}
+
+#new_yellow_card_button {
+	background-color: yellow;
+	position:absolute;
+	left:300px;
 }
 
 #delete_area {
