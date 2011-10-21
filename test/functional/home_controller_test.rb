@@ -8,8 +8,6 @@ class HomeControllerTest < ActionController::TestCase
 
   test "should update position on card_moved" do
     get("cards_moved", {'id' => '1', 'top' => '5', 'left' => '5'})
-
-    
     assert_equal(5, Card.find(1).left)
     assert_equal(5, Card.find(1).top)
     assert_response :success

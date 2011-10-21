@@ -61,7 +61,7 @@ delete_image_drop_handler = (event, ui) ->
 
 
 setup_card_interactions = ->
-	$('.card').draggable 
+	$('.card').draggable
 		stop: stop_drag_handler
 		
 
