@@ -3,10 +3,8 @@
 <span id="new_white_card_button" class="button">New Card</span>
 <span id="new_red_card_button" class="button">New Card</span>
 <span id="new_yellow_card_button" class="button">New Card</span>
-
+<%= image_tag "empty_trash.png", :alt => 'trash', :id => 'delete_image' %>
 </div>
-<div id="delete_area">Drag cards here to trash them</div>
-
 <div id="cards">
 <%= render :partial => "card", :collection => @cards %>
 </div>

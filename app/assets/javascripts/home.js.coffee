@@ -2,6 +2,20 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
+$ ->
+	$('#new_white_card_button').click ( -> new_card_handler("white"))
+	$('#new_red_card_button').click ( -> new_card_handler("red"))
+	$('#new_yellow_card_button').click ( -> new_card_handler("yellow"))
+
+	$("#delete_image").droppable({
+		drop: delete_image_drop_handler,
+		tolerance: "touch",
+		hoverClass: "droppable-hover-state"
+	})
+	$("#cards").delegate("textarea", "blur", textarea_blur_handler)
+	$('#cards').delegate(".card", "dblclick", edit_card_handler)
+
+	setup_card_interactions()
 
 stop_drag_handler = (event, ui) -> 
 	console.log "id", ui.helper[0].children[0].innerHTML
@@ -36,7 +50,7 @@ textarea_blur_handler = (event) ->
 		$(event.target).remove()
 	)
 	
-delete_area_drop_handler = (event, ui) ->
+delete_image_drop_handler = (event, ui) ->
 	xhr = $.get "card/delete", id: $(ui.helper).children(".database_id").html()
 	xhr.error( -> alert "Server isn't responding. Try reloading.")
 	xhr.success( -> $(ui.helper).remove())
@@ -46,20 +60,4 @@ setup_card_interactions = ->
 	$('.card').draggable 
 		stop: stop_drag_handler
 		
-$ ->
-	$('#new_white_card_button').click ( -> new_card_handler("white"))
-	$('#new_red_card_button').click ( -> new_card_handler("red"))
-	$('#new_yellow_card_button').click ( -> new_card_handler("yellow"))
-
-	$("#delete_area").droppable({
-		drop: delete_area_drop_handler,
-		tolerance: "touch",
-		hoverClass: "droppable-hover-state"
-	})
-	$("#cards").delegate("textarea", "blur", textarea_blur_handler)
-	$('#cards').delegate(".card", "dblclick", edit_card_handler)
-
-	setup_card_interactions()
-		
-
 
