@@ -2,15 +2,16 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
+
 stop_drag_handler = (event, ui) -> 
 	console.log "id", ui.helper[0].children[0].innerHTML
 	console.log "left: ", ui.position.left, "top: ", ui.position.top
 	xhr = $.get "card/moved", id: ui.helper[0].children[0].innerHTML, top: ui.position.top, left: ui.position.left
 	xhr.error( -> alert "Server isn't responding. Try reloading.")
 
-new_card_handler = ->
+new_card_handler = (bgcolor) ->
 	console.log "making a new card"
-	xhr = $.get "card/create", {background_color:"FFFFFF", left: 100, top: 150}
+	xhr = $.get "card/create", {background_color:bgcolor, left: 100, top: 150}
 	xhr.success((data) -> 
 		$("#cards").append(data)
 		setup_card_interactions()
@@ -44,10 +45,12 @@ delete_area_drop_handler = (event, ui) ->
 setup_card_interactions = ->
 	$('.card').draggable 
 		stop: stop_drag_handler
-
+		
 $ ->
-	$('#new_card_button').click new_card_handler
+	$('#new_white_card_button').click ( -> new_card_handler("FFFFFF"))
+	$('#new_red_card_button').click ( -> new_card_handler("FF0000"))
 	
+
 	$("#delete_area").droppable({
 		drop: delete_area_drop_handler,
 		tolerance: "touch",
@@ -55,5 +58,8 @@ $ ->
 	})
 	$("#cards").delegate("textarea", "blur", textarea_blur_handler)
 	$('#cards').delegate(".card", "dblclick", edit_card_handler)
-	
+
 	setup_card_interactions()
+		
+
+
