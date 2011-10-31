@@ -4,6 +4,7 @@ CardsOnAScreen::Application.routes.draw do
   get "card/text" => "home#card_text"
   get "card/delete" => "home#card_delete"
   get "all_trash" => "home#all_trash"
+  get "card/restore" => "home#card_restore"
 
   get "home/index"
 

@@ -42,4 +42,11 @@ class HomeController < ApplicationController
 
     render :json => cards
   end
+
+  def card_restore
+    card = Card.find_by_id(params[:id])
+    card.trashed = false
+    card.save
+    render :nothing => true
+  end
 end
