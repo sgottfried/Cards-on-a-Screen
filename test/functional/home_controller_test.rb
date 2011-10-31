@@ -48,10 +48,10 @@ class HomeControllerTest < ActionController::TestCase
     assert cards.size == 1
   end
 
-  test 'should restore card' do
+   test 'should restore card' do
     get :card_restore, {:id => 3}
     assert_response :success
     card = Card.find(3)
-    assert_false card.trashed?, 'If a card is restored, it should not be trashed.'
+    assert_false card.trashed, 'If a card is restored, it should not be trashed.'
   end
 end

@@ -47,6 +47,6 @@ class HomeController < ApplicationController
     card = Card.find_by_id(params[:id])
     card.trashed = false
     card.save
-    render :nothing => true
+    render :partial => 'card', :object => card
   end
 end

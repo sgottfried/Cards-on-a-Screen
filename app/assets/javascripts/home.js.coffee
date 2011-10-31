@@ -69,7 +69,7 @@ all_trash = ->
 		trashed = '<div id = "trashed">'
 		for card in cards
 			do (card) ->
-				trashed += '<div>' + card.text + '</div>'
+				trashed += '<div>' + card.text + ' <a href = "" onclick = "$.get(\'/card/restore?id=' + card.id + '\')"> restore</a></div>'
 		trashed += '</div>'
 		$(trashed).dialog()
 	)
