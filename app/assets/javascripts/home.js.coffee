@@ -6,7 +6,7 @@ $ ->
 	$('#new_white_card_button').click ( -> new_card_handler("white"))
 	$('#new_red_card_button').click ( -> new_card_handler("red"))
 	$('#new_yellow_card_button').click ( -> new_card_handler("yellow"))
-
+	$('#delete_image').click(all_trash)
 	$("#delete_image").droppable({
 		drop: delete_image_drop_handler,
 		tolerance: "touch",
@@ -63,5 +63,11 @@ delete_image_drop_handler = (event, ui) ->
 setup_card_interactions = ->
 	$('.card').draggable
 		stop: stop_drag_handler
-		
-
+all_trash = ->
+	xhr = $.get 'all_trash'
+	xhr.success((cards) ->
+		for card in cards
+			do (card) ->
+				alert (card.text)
+		)
+	xhr.error( -> alert "Server isn't responding.  Try reloading.")

@@ -11,3 +11,10 @@ two:
   top: 350
   left: 525
   text: "Give promotions"
+
+three:
+  id: 3
+  top: 350
+  left: 525
+  text: "Give promotions"
+  trashed: true

@@ -39,4 +39,12 @@ class HomeControllerTest < ActionController::TestCase
     card = Card.find(2)
     assert card.trashed, 'If card is deleted, it should end up in the trash.'
   end
+
+  test "should get all trash" do
+    get :all_trash
+    assert_response :success
+
+    cards = JSON.parse @response.body
+    assert cards.size == 1
+  end
 end

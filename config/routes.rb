@@ -3,6 +3,7 @@ CardsOnAScreen::Application.routes.draw do
   get "card/create" => "home#card_create"
   get "card/text" => "home#card_text"
   get "card/delete" => "home#card_delete"
+  get "all_trash" => "home#all_trash"
 
   get "home/index"
 

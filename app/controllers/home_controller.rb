@@ -36,4 +36,10 @@ class HomeController < ApplicationController
     card.save
     render :nothing => true
   end
+
+  def all_trash
+    cards = Card.select {|c| c if c.trashed}
+
+    render :json => cards
+  end
 end
