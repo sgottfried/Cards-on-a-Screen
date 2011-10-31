@@ -66,8 +66,11 @@ setup_card_interactions = ->
 all_trash = ->
 	xhr = $.get 'all_trash'
 	xhr.success((cards) ->
+		trashed = '<div id = "trashed">'
 		for card in cards
 			do (card) ->
-				alert (card.text)
-		)
+				trashed += '<div>' + card.text + '</div>'
+		trashed += '</div>'
+		$(trashed).dialog()
+	)
 	xhr.error( -> alert "Server isn't responding.  Try reloading.")
